@@ -3,6 +3,7 @@ var router = express.Router();
 const userController = require("../controller/userController");
 const productController = require("../controller/productController");
 const cartController = require("../controller/cartController");
+const orderController = require("../controller/orderController");
 /**
  * @swagger
  * /login:
@@ -23,4 +24,5 @@ router.get("/carts", cartController.getAllCarts);
 router.get("/carts/:username", cartController.getUserCart);
 router.post("/carts", cartController.addToCart);
 router.put("/carts/:username", cartController.updateCart);
+router.post("/orders/:username", orderController.placeOrder);
 module.exports = router;
