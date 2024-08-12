@@ -69,3 +69,9 @@ exports.newUser = async (req, res) => {
     });
   }
 };
+
+exports.wrongPath = async (req, res) => {
+  res.status(404).json({
+    message: "Resource not found",
+  });
+};

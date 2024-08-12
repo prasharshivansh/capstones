@@ -50,3 +50,27 @@ exports.getMobiles = async (req, res) => {
     });
   }
 };
+
+exports.removeProducts = async (req, res) => {
+  try {
+    const deletedProduct = await ProductModel.deleteOne({
+      productCode: req.params.product,
+    });
+    if (deletedProduct.deletedCount > 0) {
+      res.status(200).json({
+        status: "SUCCESS",
+        message: `${req.params.product} successfully deleted`,
+      });
+    } else {
+      res.status(400).json({
+        status: "SUCCESS",
+        message: `${req.params.product} not available`,
+      });
+    }
+  } catch (err) {
+    res.status(404).json({
+      status: "ERROR",
+      message: err.message,
+    });
+  }
+};
